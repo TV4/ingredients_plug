@@ -13,7 +13,6 @@ end
 In `endpoint.ex` add the following plug:
 ```elixir
   plug IngredientsPlug,
-    framework: %{name: "phoenix", version: elem(Mix.Dep.Lock.read().phoenix, 2)},
     birthday: "<birthday_of_project>"
 ```
 (Birthday optional, but recommended)
