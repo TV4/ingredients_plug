@@ -1,21 +1,19 @@
 # IngredientsPlug
 
-**TODO: Add description**
-
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ingredients_plug` to your list of dependencies in `mix.exs`:
-
+Add in `mix.exs`
 ```elixir
 def deps do
   [
-    {:ingredients_plug, "~> 0.1.0"}
+    {:ingredients_plug, github: "TV4/ingredients_plug"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ingredients_plug>.
-
+In `endpoint.ex` add the following plug:
+```elixir
+  plug IngredientsPlug,
+    framework: %{name: "phoenix", version: elem(Mix.Dep.Lock.read().phoenix, 2)},
+    birthday: "<birthday_of_project>"
+```
+(Birthday optional, but recommended)
