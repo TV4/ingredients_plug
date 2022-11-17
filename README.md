@@ -12,5 +12,6 @@ end
 
 In `endpoint.ex` add the following plug:
 ```elixir
-  plug IngredientsPlug
+  plug IngredientsPlug,
+    framework: %{name: "phoenix", version: elem(Mix.Dep.Lock.read().phoenix, 2)}
 ```
