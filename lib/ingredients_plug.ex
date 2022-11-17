@@ -34,14 +34,19 @@ defmodule IngredientsPlug do
   end
 
   defp append_revision_and_modified(map) do
-    {hash, _} = System.cmd("git", ["rev-parse", "HEAD"])
-    revision = String.trim(hash)
-    {datetime, _} = System.cmd("git", ["log", "-1", "--format=%cd"])
+    # {hash, _} = System.cmd("git", ["rev-parse", "HEAD"])
+    # revision = String.trim(hash)
+    # {datetime, _} = System.cmd("git", ["log", "-1", "--format=%cd"])
 
-    {:ok, parsed_datetime} =
-      datetime |> String.trim() |> Timex.parse("%a %b %d %T %Y %z", :strftime)
+    # {:ok, parsed_datetime} =
+    # datetime |> String.trim() |> Timex.parse("%a %b %d %T %Y %z", :strftime)
 
-    {:ok, date} = parsed_datetime |> Timex.format("{YYYY}-{0M}-{D}")
-    Map.put(map, :vcs, %{revision: revision, time: date})
+    # {:ok, date} = parsed_datetime |> Timex.format("{YYYY}-{0M}-{D}")
+    # , time: date})
+    Map.put(map, :vcs, %{revision: revision(), time: time()})
   end
+
+  defp time(), do: System.get_env("UPDATED_AT")
+
+  defp revision(), do: System.get_env("COMMIT_SHA")
 end
