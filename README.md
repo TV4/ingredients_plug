@@ -12,7 +12,5 @@ end
 
 In `endpoint.ex` add the following plug:
 ```elixir
-  plug IngredientsPlug,
-    birthday: "<birthday_of_project>"
+  plug IngredientsPlug
 ```
-(Birthday optional, but recommended)
