@@ -2,6 +2,10 @@ defmodule IngredientsPlug do
   import Plug.Conn
 
   def init(options) do
+    unless Keyword.has_key?(options, :framework) do
+      raise ArgumentError, "framework is missing"
+    end
+
     Keyword.merge([date_time: &DateTime.utc_now/0, http_client: HTTPoison], options)
   end
 
