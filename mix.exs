@@ -23,7 +23,7 @@ defmodule IngredientsPlug.MixProject do
     [
       {:plug, "~> 1.14"},
       {:jason, "~> 1.4"},
-      {:httpoison, "~> 1.8"},
+      {:httpoison, "~> 2.1"},
       {:timex, "~> 3.7"},
       {:hammox, "~> 0.7.0", only: :test}
     ]
